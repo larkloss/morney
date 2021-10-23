@@ -4,7 +4,8 @@ import React from 'react';
 import Icon from "./Icon";
 
 
-const NavWrapper = styled.nav `
+const NavWrapper = styled.nav`
+  background: white;
   line-height: 24px;
   box-shadow: 0 0 3px rgba(0,0,0,0.25);
   > ul {
@@ -12,18 +13,26 @@ const NavWrapper = styled.nav `
     > li{
       width: 33.3333%;
       text-align:center;
-      display: flex;
-      flex-direction: column;
-      padding: 4px 0;
-      justify-content: center;
-      align-items: center;
-      .icon {
-        width: 24px;
-        height: 24px;
+      > a {
+        display: flex;
+        flex-direction: column;
+        padding: 4px 0;
+        justify-content: center;
+        align-items: center;
+        .icon {
+          width: 24px;
+          height: 24px;
+        }
+        &.selected{
+          color: red;
+          .icon{
+            fill: red;
+          }
+        }
       }
     }
   }
-`
+`;
 
 const Nav = () => {
     return (
