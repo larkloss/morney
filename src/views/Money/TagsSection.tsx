@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import React from "react";
+import React, {useState} from "react";
 
-const _TagsSection = styled.section`
+const TagsWrapper = styled.section`
   background: #FFFFFF; padding: 12px 16px;
   flex-grow: 1; display:flex; flex-direction: column;
   justify-content: flex-end; align-items: flex-start;
@@ -19,17 +19,40 @@ const _TagsSection = styled.section`
   }
 `;
 
-const TagsSection: React.FC = () => {
+
+
+
+const TagsSection: React.FC = (props) => {
+    const [tags, setTags] = useState<string []>(['衣', '食','住', '行'])
+    const [selectTags, setSelectTags] = useState<string []>([])
+    const onAddTag = () => {
+        const tagName = window.prompt('新的标签名称为：')
+        if (tagName !== null) {
+            setTags([...tags, tagName])
+        }
+    }
+    const onToggleTag = (tag:string) => {
+        const index = selectTags.indexOf(tag)
+        if (index >= 0) {
+            setSelectTags((selectTags.filter(t => t !== tag)))
+        } else {
+            setSelectTags([...selectTags, tag])
+        }
+    }
+    const getClass= (tag :string) => (
+        selectTags.indexOf(tag) >= 0 ? 'Selected' : 'unSelected'
+    )
     return (
-        <_TagsSection>
+        <TagsWrapper>
             <ol>
-                <li>衣</li>
-                <li>食</li>
-                <li>住</li>
-                <li>行</li>
+                {tags.map(tag =>
+                    <li key ={tag}
+                        onClick={() => {onToggleTag(tag)}} className={getClass(tag)}>
+                    {tags}</li>
+                )}
             </ol>
             <button>新增标签</button>
-        </_TagsSection>
+        </TagsWrapper>
     )
 }
 
