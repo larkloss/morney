@@ -1,7 +1,7 @@
-
 import styled from 'styled-components';
+import {useState} from "react";
 
-const NotesSection = styled.section`
+const NotesWrapper = styled.section`
   background: #f5f5f5;
   padding: 0 16px;
   font-size: 14px;
@@ -18,5 +18,19 @@ const NotesSection = styled.section`
     }
   }
 `;
+
+const NotesSection = () => {
+    const [note, setNote] = useState('')
+    return (
+        <NotesWrapper>
+            <label>
+                <span>备注</span>
+                <input type="text" placeholder="在这里添加备注"
+                       value={note}
+                       onChange={(e) => (e.target.value)}/>
+            </label>
+        </NotesWrapper>
+    )
+}
 
 export {NotesSection}

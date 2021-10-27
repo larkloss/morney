@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 
-const CategorySection = styled.section`
+const CategoryWrapper = styled.section`
   font-size: 24px;
   > ul{
     display:flex;
@@ -24,5 +24,9 @@ const CategorySection = styled.section`
     }
   }
 `;
+
+const CategorySection = () => {
+
+}
 
 export {CategorySection}

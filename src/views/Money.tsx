@@ -15,8 +15,8 @@ const MyLayout = styled(Layout)`
 function Money() {
     return (
         <MyLayout>
-            <TagsSection></TagsSection>
-            <NotesSection></NotesSection>
+            <TagsSection/>
+            <NotesSection/>
             <CategorySection></CategorySection>
             <NumberPadSection></NumberPadSection>
         </MyLayout>
