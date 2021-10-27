@@ -23,8 +23,8 @@ const TagsWrapper = styled.section`
 
 
 const TagsSection: React.FC = (props) => {
-    const [tags, setTags] = useState<string []>(['衣', '食','住', '行'])
-    const [selectTags, setSelectTags] = useState<string []>([])
+    const [tags, setTags] = useState<string[]>(['衣','食','住','行'])
+    const [selectTags, setSelectTags] = useState<string[]>([])
     const onAddTag = () => {
         const tagName = window.prompt('新的标签名称为：')
         if (tagName !== null) {
@@ -51,7 +51,7 @@ const TagsSection: React.FC = (props) => {
                     {tags}</li>
                 )}
             </ol>
-            <button>新增标签</button>
+            <button onClick={onAddTag} >新增标签</button>
         </TagsWrapper>
     )
 }
