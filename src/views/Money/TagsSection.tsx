@@ -19,12 +19,14 @@ const TagsWrapper = styled.section`
   }
 `;
 
+type Props = {
+    value:string[],
+    onChange: (selected: string[]) => void
+}
 
-
-
-const TagsSection: React.FC = (props) => {
-    const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
-    const [selectTags, setSelectTags] = useState<string[]>([])
+const TagsSection: React.FC<Props> = (props) => {
+    const [tags, setTags] = useState<string[]>(['1', '2', '3', '4']);
+    const selectedTags = props.value
     const onAddTag = () => {
         const tagName = window.prompt('新的标签名称为：')
         if (tagName !== null) {
@@ -32,15 +34,15 @@ const TagsSection: React.FC = (props) => {
         }
     }
     const onToggleTag = (tag:string) => {
-        const index = selectTags.indexOf(tag)
+        const index = selectedTags.indexOf(tag)
         if (index >= 0) {
-            setSelectTags((selectTags.filter(t => t !== tag)))
+            props.onChange(selectedTags.filter(t => t !== tag))
         } else {
-            setSelectTags([...selectTags, tag])
+            props.onChange([...selectedTags, tag])
         }
     }
     const getClass= (tag :string) => (
-        selectTags.indexOf(tag) >= 0 ? 'Selected' : 'unSelected'
+        selectedTags.indexOf(tag) >= 0 ? 'Selected' : 'unSelected'
     )
     return (
         <TagsWrapper>

@@ -1,4 +1,4 @@
-const Calculator = (text:string, output: '0') => {
+const Calculator = (text: string, output: string) => {
     switch (text) {
         case '0':
         case '1':
