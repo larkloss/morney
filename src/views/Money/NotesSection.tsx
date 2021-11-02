@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, {useRef, useState} from "react";
+import React, {useRef} from "react";
 
 const NotesWrapper = styled.section`
   background: #f5f5f5;

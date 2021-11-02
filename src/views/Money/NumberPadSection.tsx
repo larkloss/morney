@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {NumberPadWrapper} from "./NumberPad/NumberPadWrapper";
 import {Calculator} from "./NumberPad/Calculator";
 
