@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import Icon from "../components/Icon";
 import styled from "styled-components";
 import {Button} from "../components/Button";
+import {Input} from "../components/Input";
 
 type Params = {
     id: string
@@ -25,9 +26,9 @@ const InputWrapper = styled.div`
 `;
 
 const Tag: React.FC = (props) => {
-    const {findTag} = useTags();
-    let {id} = useParams<Params>();
-    const tag = findTag(parseInt(id));
+    const {findTag, updateTag, deleteTag} = useTags();
+    let {id: idString} = useParams<Params>();
+    const tag = findTag(parseInt(idString));
     return (
         <Layout>
             <Toolbar>
@@ -35,15 +36,18 @@ const Tag: React.FC = (props) => {
                 <span>编辑标签</span>
                 <Icon name="forward"/>
             </Toolbar>
-            <div>{tag.name}</div>
             <div>
-                <label>
-                    <span>标签名</span>
-                <input type="text" placeholder="标签名"></input>
-                </label>
+                <InputWrapper>
+                    <Input label="标签名" type="text" placeholder="标签名"
+                           value={tag.name}
+                           onChange={(e) => {
+                               updateTag(tag.id, {name: e.target.value});
+                           }}
+                    />
+                </InputWrapper>
             </div>
             <div>
-                <Button>删除标签</Button>
+                <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
             </div>
         </Layout>
     );

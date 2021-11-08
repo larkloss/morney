@@ -3,6 +3,7 @@ import React from 'react';
 import {useTags} from "../hooks/useTags";
 import styled from "styled-components";
 import Icon from "../components/Icon";
+import {Link} from 'react-router-dom';
 
 const TagList = styled.ol`
   font-size: 16px; 
@@ -46,15 +47,17 @@ function Tags() {
                 <ol>
                     {tags.map(tag =>
                         <li key={tag.id}>
-                            <span className="oneLine">{tag.name}</span>
+                            <Link to={'./tags' + tag.id}>
+                            <span className="oneLine">{tag.id}:{tag.name}</span>
                             <Icon name="forward"/>
+                            </Link>
                         </li>
                     )}
                 </ol>
                 <Center>
-                    <Space></Space>
-                    <Space></Space>
-                    <Space></Space>
+                    <Space/>
+                    <Space/>
+                    <Space/>
                     <Button>新增标签</Button>
                 </Center>
             </TagList>
