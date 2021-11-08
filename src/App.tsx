@@ -10,7 +10,7 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route exact path="/tag/:tag" >
+                <Route exact path="/tag/:id" >
                 <Tag/>
                 </Route>
                 <Route exact path="/tags">

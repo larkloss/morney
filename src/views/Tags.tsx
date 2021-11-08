@@ -39,18 +39,24 @@ const Space = styled.div`
 `;
 
 function Tags() {
-    const {tags, setTags} = useTags()
+    const {tags} = useTags()
     return (
         <Layout>
             <TagList>
                 <ol>
-                    {tags.map(tag => <li
-                        key={tag.id}>
-                        <span className="oneLine">{tag}</span>
-                        <Icon name="forward"/>
-                    </li>)}
+                    {tags.map(tag =>
+                        <li key={tag.id}>
+                            <span className="oneLine">{tag.name}</span>
+                            <Icon name="forward"/>
+                        </li>
+                    )}
                 </ol>
-               <Button>新增标签</Button>
+                <Center>
+                    <Space></Space>
+                    <Space></Space>
+                    <Space></Space>
+                    <Button>新增标签</Button>
+                </Center>
             </TagList>
         </Layout>
     );
