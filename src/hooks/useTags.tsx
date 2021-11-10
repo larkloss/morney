@@ -21,6 +21,13 @@ const useTags = () => { // 封装一个自定义 Hook
         }
         return result;
     };
+    const addTag = () => {
+        console.log('hi');
+        const tagName = window.prompt('新标签的名称为');
+        if (tagName !== null && tagName !== '') {
+            setTags([...tags, {id: createId(), name: tagName}]);
+        }
+    };
     const updateTag = (id: number, obj: { name: string }) => {
         // 获取你要改的 tag 的下标
         const index = findTagIndex(id);
@@ -39,7 +46,7 @@ const useTags = () => { // 封装一个自定义 Hook
         tagsClone.splice(index, 1);
         setTags(tagsClone);
     };
-    return {tags, setTags, findTag, updateTag, findTagIndex, deleteTag};
+    return {tags, setTags, findTag, updateTag, addTag, findTagIndex, deleteTag};
 };
 
 export {useTags};
